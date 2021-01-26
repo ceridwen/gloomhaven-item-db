@@ -1,7 +1,7 @@
 import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types"
 import {SpoilerFilter} from "../State/SpoilerFilter";
 import { Helpers } from "../helpers";
-import { GameType } from ".";
+import { GameType } from "../State/GameType";
 
 const deSpoilerItemSource = (source:string): string => {
     return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');

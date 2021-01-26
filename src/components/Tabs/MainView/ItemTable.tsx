@@ -3,10 +3,10 @@ import { GloomhavenItem, SortProperty } from '../../../State/Types'
 import {  Table, Popup, Icon, Image } from 'semantic-ui-react';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
-import { getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
 import { getItemViewState } from '../../../State/ItemViewState';
 import { useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
+import { GameType } from '../../../State/GameType';
 
 type Props = {
     items : GloomhavenItem[];
@@ -26,7 +26,7 @@ const GHIcon = (props:IconProps) => {
 
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
-    const { enableStoreStockManagement, discount } = getSpoilerFilter();
+    const { enableStoreStockManagement, discount } = getRealSpoilerFilter();
     const { property, direction } = getItemViewState();
     const { gameType } = useGame();
 

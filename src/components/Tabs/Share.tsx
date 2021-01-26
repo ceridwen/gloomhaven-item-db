@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { Form, Icon, Message } from 'semantic-ui-react';
-import { GameType } from '../../games';
-import { getAllSpoilerFilters, SpoilerMap } from '../../State/SpoilerFilter';
+import { GameType } from '../../State/GameType';
+import { getRealAllSpoilerFilters } from '../../State/Selectors';
+import { SpoilerMap } from '../../State/SpoilerFilter';
 
 type Props = {
 }
 
 const Share = (props:Props) => {
     const {} = props;
-    let allSpoilerFilters = getAllSpoilerFilters();
+    const allSpoilerFilters = getRealAllSpoilerFilters();
     const [ shareLockSpoilerPanel, setShareLockSpoilerPanel] = useState(false);
 
     const newObj:SpoilerMap = {};

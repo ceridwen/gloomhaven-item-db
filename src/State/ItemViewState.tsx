@@ -1,5 +1,4 @@
 import { GloomhavenItemSlot, SortDirection, SortProperty } from "./Types";
-import { GameType } from "../games";
 import { createSelector } from "reselect";
 import { RootState } from "./Reducer";
 import memoize from 'lodash.memoize'
@@ -7,6 +6,7 @@ import { useGame } from "../components/Game/GameProvider";
 import { useSelector } from "react-redux";
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadGameTypeAction } from "./GameTypeAction";
+import { GameType } from "./GameType";
 
 export interface ItemViewState {
     slots?: Array<GloomhavenItemSlot>;

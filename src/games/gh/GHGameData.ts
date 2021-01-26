@@ -2,7 +2,7 @@ import { BaseGameData } from '../GameData'
 import { GloomhavenItem } from '../../State/Types';
 import GHSpoilerFilter from '../../components/Tabs/SpoilerFilters/GHSpoilerFilter';
 import {SpoilerFilter} from '../../State/SpoilerFilter';
-import { GameType } from '..';
+import { GameType } from '../../State/GameType';
 
 const oldFilterLocalStorageKey = 'ItemView:spoilerFilter';
 

@@ -2,8 +2,9 @@ import React from 'react'
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeScenarioCompleted, getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { GameType } from '../../../games';
+import { storeScenarioCompleted } from '../../../State/RealState';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
+import { GameType } from '../../../State/GameType';
 
 type Props = {
     gameType: GameType;
@@ -12,7 +13,7 @@ type Props = {
 const JOTLSpoilerFilter = (props:Props) => {
     const { gameType } = props;
     const scenariosOfImportance = [2, 9, 15];
-    const { scenarioCompleted } = getSpoilerFilter();
+    const { scenarioCompleted } = getRealSpoilerFilter();
     const dispatch = useDispatch();
 
     const toggleScenarioCompleted = (key: number) => {
@@ -22,7 +23,7 @@ const JOTLSpoilerFilter = (props:Props) => {
         } else {
             value.push(key)
         }
-        dispatch(storeScenarioCompleted({value, gameType}));
+        dispatch(storeScenarioCompleted(value));
     }
 
     return (

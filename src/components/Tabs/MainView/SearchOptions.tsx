@@ -1,12 +1,13 @@
 import React from 'react'
 import { Form, Button, Input } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeDisplayAs, storeDiscount } from '../../../State/RealState';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
 import { storeFilterSearch, storeFilterSlots, getItemViewState } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
+import { GameType } from '../../../State/GameType';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -14,7 +15,7 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { displayAs, discount } = getSpoilerFilter();
+    const { displayAs, discount } = getRealSpoilerFilter();
     const { property, search, slots } = getItemViewState();
     const dispatch = useDispatch();
     const { gameType, getItemFilterSlots } = useGame();
@@ -48,11 +49,11 @@ const SearchOptions = (props:Props) => {
                     <label>Render as:</label>
                     <Button.Group>
                         <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs({value:'list', gameType}));
+                                dispatch(storeDisplayAs('list'));
                             }}>List</Button>
                         <Button.Or/>
                         <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs({value:'images', gameType}));
+                                dispatch(storeDisplayAs('images'));
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
@@ -73,7 +74,7 @@ const SearchOptions = (props:Props) => {
                                 {value: 5, text: "+5 gold"}, // (-19 - -20)
                             ]}
                             onChange={(obj, e) => {
-                                dispatch(storeDiscount({value:typeof e.value === 'number' ? e.value : 0, gameType}));
+                                dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0));
                             }}
                     />
                 </Form.Group>}

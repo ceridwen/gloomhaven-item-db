@@ -1,14 +1,15 @@
 import React from 'react'
 import { Form, Button, Icon } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeEnableStoreStockManagement, storeAll, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeEnableStoreStockManagement, storeAll } from '../../../State/RealState';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
 import { useGame } from '../../Game/GameProvider';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
-    const { spoilerFilter, gameType} = useGame();
+    const { spoilerFilter } = useGame();
 
-    const { enableStoreStockManagement, all } = getSpoilerFilter();
+    const { enableStoreStockManagement, all } = getRealSpoilerFilter();
 
     return (
         <Form>
@@ -16,7 +17,7 @@ const SpoilerFilters = () => {
                 <label>Respecting Spoiler Settings:</label>
                 <Button
                     color={all ? 'red' : 'blue'}
-                    onClick={() => dispatch(storeAll({value:!all,gameType}))}
+                    onClick={() => dispatch(storeAll(!all))}
                 >
                     {all
                         ? <React.Fragment><Icon name={'eye'}/> disabled</React.Fragment>
@@ -31,7 +32,7 @@ const SpoilerFilters = () => {
                     toggle
                     checked={enableStoreStockManagement}
                     onClick={() => {
-                        dispatch(storeEnableStoreStockManagement({value:!enableStoreStockManagement, gameType}));
+                        dispatch(storeEnableStoreStockManagement(!enableStoreStockManagement));
                     }}/>
             </Form.Group>
 

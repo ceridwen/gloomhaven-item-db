@@ -2,7 +2,7 @@ import { BaseGameData } from '../GameData';
 import { GloomhavenItem, GloomhavenItemSlot } from '../../State/Types';
 import JOTLSpoilerFilter from '../../components/Tabs/SpoilerFilters/JOTLSpoilerFilter';
 import { SpoilerFilter } from '../../State/SpoilerFilter';
-import { GameType } from '..';
+import { GameType } from '../../State/GameType';
 
 export class JOTLGameData extends BaseGameData {
     constructor()

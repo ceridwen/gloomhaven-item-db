@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import {  useDispatch } from 'react-redux';
-import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter, SpoilerMap } from '../../../State/SpoilerFilter';
+import { SpoilerFilter, restoreFromLocalStorage, SpoilerMap } from '../../../State/SpoilerFilter';
+import { storeSpoilerFilter } from '../../../State/RealState';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
 import useItems  from '../../../hooks/useItems'
 import {useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
+import { GameType } from '../../../State/GameType';
 
 const MainView = () => {
     const { localStorageKey, convertSavedData, gameType} = useGame();
-    const {all, lockSpoilerPanel} = getSpoilerFilter();
+    const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);
+    const {all, lockSpoilerPanel} = getRealSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
-    const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);
     const loadGamesFromStorage = () => {
         Object.values(GameType).forEach( gt => {
             const value = restoreFromLocalStorage(LOCAL_STORAGE_PREFIX + gt);

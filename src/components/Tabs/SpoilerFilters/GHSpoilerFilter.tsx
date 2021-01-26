@@ -1,10 +1,11 @@
 import React from 'react'
 import { Form, Image } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeProsperity, storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeProsperity, storeSoloClass } from '../../../State/RealState';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
-import { GameType } from '../../../games';
+import { GameType } from '../../../State/GameType';
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
@@ -15,7 +16,7 @@ type Props = {
 
 const GHSpoilerFilter = (props: Props) => {
     const { gameType } = props;
-    const { soloClass, prosperity } = getSpoilerFilter();
+    const { soloClass, prosperity } = getRealSpoilerFilter();
     const dispatch = useDispatch();
 
     const toggleClassFilter = (key: SoloClassShorthand) => {
@@ -25,7 +26,7 @@ const GHSpoilerFilter = (props: Props) => {
         } else {
             value.push(key)
         }
-        dispatch(storeSoloClass({value, gameType}));
+        dispatch(storeSoloClass(value));
     }
 
     return (
@@ -37,7 +38,7 @@ const GHSpoilerFilter = (props: Props) => {
                         return (
                             <Form.Radio key={index} label={nextProsperity}
                                         checked={prosperity === nextProsperity}
-                                        onChange={() => dispatch(storeProsperity({value:nextProsperity, gameType}))}/>
+                                        onChange={() => dispatch(storeProsperity(nextProsperity))}/>
                     )})}
             </Form.Group>
 

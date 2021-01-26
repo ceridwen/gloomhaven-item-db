@@ -6,7 +6,7 @@ import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';
 import ItemGrid from './ItemGrid';
 import { storeSortingProperty, storeSortingDirection, getItemViewState } from '../../../State/ItemViewState';
-import { getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { getRealSpoilerFilter } from '../../../State/Selectors';
 import { useGame } from '../../Game/GameProvider';
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 const ItemList = (props:Props) => {
     const {items} = props;
     const { gameType } = useGame();
-    const { displayAs, all } = getSpoilerFilter();
+    const { displayAs, all } = getRealSpoilerFilter();
     const { property, direction } = getItemViewState();
     const dispatch = useDispatch();
 
