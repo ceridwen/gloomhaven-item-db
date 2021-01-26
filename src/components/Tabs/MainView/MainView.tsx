@@ -13,7 +13,7 @@ import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 import { GameType } from '../../../State/GameType';
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, gameType} = useGame();
+    const { localStorageKey, convertSavedData} = useGame();
     const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);
     const {all, lockSpoilerPanel} = getRealSpoilerFilter();
     const dispatch = useDispatch();

@@ -1,7 +1,6 @@
 import { GloomhavenItemSlot, GloomhavenItem, SortDirection } from "../State/Types"
 import { useGame } from "../components/Game/GameProvider"
-import { getRealSpoilerFilter } from "../State/Selectors";
-import { getItemViewState } from "../State/ItemViewState";
+import { getRealSpoilerFilter, getItemViewState } from "../State/Selectors";
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 

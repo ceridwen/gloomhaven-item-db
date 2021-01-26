@@ -1,8 +1,7 @@
 import {combineReducers } from "redux";
-import itemViewState from "./ItemViewState"
 import realReducer from "./RealState"
 
-const rootReducer = combineReducers( { itemViewState, realReducer} );
+const rootReducer = combineReducers( { realReducer} );
 
 export type RootState = ReturnType<typeof rootReducer>;
 

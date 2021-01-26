@@ -1,9 +1,8 @@
 import React from 'react'
 import { Form, Button, Input } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeDisplayAs, storeDiscount } from '../../../State/RealState';
-import { getRealSpoilerFilter } from '../../../State/Selectors';
-import { storeFilterSearch, storeFilterSlots, getItemViewState } from '../../../State/ItemViewState';
+import { storeDisplayAs, storeDiscount, storeFilterSearch, storeFilterSlots } from '../../../State/RealState';
+import { getRealSpoilerFilter, getItemViewState } from '../../../State/Selectors';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
@@ -23,7 +22,7 @@ const SearchOptions = (props:Props) => {
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
-            dispatch(storeFilterSlots({value:undefined, gameType}));    
+            dispatch(storeFilterSlots(undefined));    
             return;
         }
         let value = Object.assign([], slots);
@@ -35,10 +34,10 @@ const SearchOptions = (props:Props) => {
         }
         if (value.length === 0)
         {
-            dispatch(storeFilterSlots({value:undefined, gameType}));
+            dispatch(storeFilterSlots(undefined));
         }
         else
-            dispatch(storeFilterSlots({value, gameType}));
+            dispatch(storeFilterSlots(value));
     }
 
 
@@ -107,8 +106,8 @@ const SearchOptions = (props:Props) => {
                     <label>Find Item:</label>
                     <Input
                         value={search}
-                        onChange={(e) => dispatch(storeFilterSearch({value:e.target.value, gameType}))}
-                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch({value:'', gameType}))}}
+                        onChange={(e) => dispatch(storeFilterSearch(e.target.value))}
+                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch(''))}}
                         placeholder={'Search...'}
                     />
                 </Form.Group>

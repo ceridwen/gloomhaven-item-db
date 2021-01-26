@@ -3,15 +3,13 @@ import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeItem } from '../../../State/RealState';
 import { getRealSpoilerFilter } from '../../../State/Selectors';
-import { GameType } from '../../../State/GameType';
 
 type Props = {
     id: number;
-    gameType:GameType;
 }
 
 const FilterCheckbox = (props:Props) => {
-    const { id, gameType } = props;
+    const { id } = props;
     const { item } = getRealSpoilerFilter();
     const dispatch = useDispatch();
 

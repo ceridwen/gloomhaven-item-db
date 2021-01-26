@@ -4,14 +4,8 @@ import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeScenarioCompleted } from '../../../State/RealState';
 import { getRealSpoilerFilter } from '../../../State/Selectors';
-import { GameType } from '../../../State/GameType';
 
-type Props = {
-    gameType: GameType;
-}
-
-const JOTLSpoilerFilter = (props:Props) => {
-    const { gameType } = props;
+const JOTLSpoilerFilter = () => {
     const scenariosOfImportance = [2, 9, 15];
     const { scenarioCompleted } = getRealSpoilerFilter();
     const dispatch = useDispatch();
@@ -36,7 +30,7 @@ const JOTLSpoilerFilter = (props:Props) => {
                         onChange={() => toggleScenarioCompleted(id)}/> 
                 })}
             </Form.Group>
-            <SpoilerFilterItemList gameType={gameType} ranges={[{start:14, end:14}, {start:27, end:36}]} title="Items"/>
+            <SpoilerFilterItemList ranges={[{start:14, end:14}, {start:27, end:36}]} title="Items"/>
         </>
     )
 }

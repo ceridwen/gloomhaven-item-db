@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { Container, DropdownProps, Form } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import dbApp from "./State/Reducer";
