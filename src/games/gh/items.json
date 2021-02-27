@@ -449,6 +449,7 @@
     "cost": 35,
     "slot": "Body",
     "source": "Prosperity 6",
+    "spent": true,
     "minusOneCardsAdded": 4,
     "desc": "On the next four sources of damage to you from attacks, gain Shield 1."
   },
@@ -695,6 +696,7 @@
     "count": 2,
     "cost": 70,
     "slot": "Small Item",
+    "consumed": true,
     "source": "Prosperity 9",
     "desc": "During your turn, Refresh all of your spent items, Heal 3 damage, and Recover up to two of your discarded cards."
   },
@@ -704,6 +706,7 @@
     "count": 2,
     "cost": 75,
     "slot": "Small Item",
+    "consumed": true,
     "source": "Prosperity 9\nFC Challenge Scenario, Rift Card 12 (Treasure #89)\nSection 103 -> 84\"Gateway to the Firmament\" in book",
     "desc": "At the end of your turn, play two cards from your hand and perform an additional turn this round based on your new leading initiative (which must be later than your previous initiative)."
   },
@@ -1537,6 +1540,7 @@
     "count": 2,
     "cost": 25,
     "slot": "Small Item",
+    "consumed": true,
     "source": "Reward From Scenario #99",
     "desc": "The next three times you would gain POISON prevent the condition."
   },
@@ -1546,6 +1550,7 @@
     "count": 2,
     "cost": 50,
     "slot": "Small Item",
+    "consumed": true,
     "source": "Reward from Scenario #105",
     "desc": "The next five times you would gain POISON prevent the condition."
   },
